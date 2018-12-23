@@ -23,6 +23,18 @@ const checkType = element => {
   return null;
 }
 
+function* iterate(element) {
+  const type = checkType(element);
+  if (type === ARRAY || type === STRING) {
+    let index = 0;
+    while (index < element.length) {
+      yield [element[index], index, element];
+      index += 1;
+    }
+    return;
+  }
+}
+
 module.exports = {
   checkType,
   type: {
