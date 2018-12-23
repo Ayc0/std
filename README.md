@@ -11,11 +11,11 @@ function* range([from,] to[, step]) {
 ## Map
 
 ```js
-function map(iterable, callback) {
+function map(iterable, callback[, thisArg]) {
   // return new iterable of the input iterable type
 }
 
-function callback(currentValue[, index[, iterable]] [, thisArg]) {
+function callback(currentValue[, index[, iterable]]) {
   // return new element of iterable
 }
 ```
