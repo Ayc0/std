@@ -45,6 +45,14 @@ function* iterate(iterable) {
     }
     return;
   }
+  if (type === OBJECT) {
+    for (let key in iterable) {
+      if (iterable.hasOwnProperty(key)) {
+        yield [iterable[key], key, iterable];
+      }
+    }
+    return;
+  }
 }
 
 module.exports = {
