@@ -22,7 +22,7 @@ function* iterate(iterable) {
     }
     return;
   }
-  if (type === types.OBJECT) {
+  if (type === types.Object) {
     for (let key in iterable) {
       if (iterable.hasOwnProperty(key)) {
         yield [iterable[key], key, iterable];
