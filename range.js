@@ -12,14 +12,14 @@ function* range() {
     step = arguments[2];
   }
   if (step === 0) {
-    return
+    return;
   }
   if (step > 0) {
     while (from < to) {
       yield from;
       from += step;
     }
-   } else {
+  } else {
     while (from > to) {
       yield from;
       from += step;
@@ -27,4 +27,4 @@ function* range() {
   }
 }
 
-module.exports = range
+module.exports = range;
