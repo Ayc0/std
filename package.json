@@ -1,0 +1,9 @@
+{
+  "name": "@ayc0/std",
+  "version": "0.0.1",
+  "description": "Standard JS functions",
+  "main": "index.js",
+  "repository": "git@github.com:Ayc0/std.git",
+  "author": "Ayc0 <ayc0.benj@gmail.com>",
+  "license": "MIT"
+}
