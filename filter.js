@@ -4,13 +4,16 @@ const generateIterable = require("./generateIterable");
 
 function* apply(iterable, callback, thisArg) {
   for (let step of iterate(iterable)) {
-    yield [callback.apply(thisArg, step), step[1]];
+    const shouldKeepElement = callback.apply(thisArg, step);
+    if (shouldKeepElement) {
+      yield [step[0], step[1]];
+    }
   }
 }
 
-const map = (iterable, callback, thisArg) => {
+const filter = (iterable, callback, thisArg) => {
   const type = checkType(iterable);
   return generateIterable(apply(iterable, callback, thisArg), type);
 };
 
-module.exports = map;
+module.exports = filter;
