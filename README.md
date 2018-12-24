@@ -121,3 +121,40 @@ filter(x => x % 2)(new Map([["a", 1], ["b", 2]]));
 filter(x => x => x % 2)("12");
 // '1'
 ```
+
+## Reduce
+
+```js
+function reduce(callback, initialValue, thisArg) {
+  return function (iterable) {
+    // return reduced value
+  };
+}
+
+function callback(accumulator, currentValue[, index[, iterable]]) {
+  // returns the value that results from the reduction
+}
+```
+
+### Supported iterables
+
+- array
+- string
+- Map
+- Set
+- Object
+
+### Examples
+
+```js
+filter(x => x % 2)({ a: 1, b: 2 });
+// { a: 1 }
+filter(x => x % 2)([1, 2]);
+// [ 1 ]
+filter(x => x % 2)(new Set([1, 2]));
+// Set(1) {1}
+filter(x => x % 2)(new Map([["a", 1], ["b", 2]]));
+// Map(1) {"a" => 1}
+filter(x => x => x % 2)("12");
+// '1'
+```
