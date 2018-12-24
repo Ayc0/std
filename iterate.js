@@ -2,7 +2,7 @@ const { checkType, type: types } = require("./checkType");
 
 function* iterate(iterable) {
   const type = checkType(iterable);
-  if (type === types.ARRAY || type === types.STRING) {
+  if (type === types.Array || type === types.String) {
     let index = 0;
     while (index < iterable.length) {
       yield [iterable[index], index, iterable];
@@ -10,13 +10,13 @@ function* iterate(iterable) {
     }
     return;
   }
-  if (type === types.MAP) {
+  if (type === types.Map) {
     for (let key of iterable.keys()) {
       yield [iterable.get(key), key, iterable];
     }
     return;
   }
-  if (type === types.SET) {
+  if (type === types.Set) {
     for (let element of iterable) {
       yield [element, null, iterable];
     }
