@@ -8,6 +8,22 @@ function* range([from,] to[, step]) {
 }
 ```
 
+## Len
+
+```js
+function len(iterable) {
+  // return length of iterable
+}
+```
+
+### Supported iterables
+
+- array
+- string
+- Map
+- Set
+- Object
+
 ## Map
 
 ```js
