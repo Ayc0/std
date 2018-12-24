@@ -1,6 +1,6 @@
 const iterate = require("./iterate");
 
-const forEach = (iterable, callback, thisArg) => {
+const forEach = (callback, thisArg) => iterable => {
   for (let step of iterate(iterable)) {
     callback.apply(thisArg, step);
   }

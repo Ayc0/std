@@ -11,7 +11,7 @@ function* apply(iterable, callback, thisArg) {
   }
 }
 
-const filter = (iterable, callback, thisArg) => {
+const filter = (callback, thisArg) => iterable => {
   const type = checkType(iterable);
   return generateIterable(apply(iterable, callback, thisArg), type);
 };

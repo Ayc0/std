@@ -11,8 +11,10 @@ function* range([from,] to[, step]) {
 ## Map
 
 ```js
-function map(iterable, callback[, thisArg]) {
-  // return new iterable of the input iterable type
+function map(callback[, thisArg]) {
+  return function (iterable) {
+    // return new iterable of the input iterable type
+  }
 }
 
 function callback(currentValue[, index[, iterable]]) {
@@ -31,22 +33,24 @@ function callback(currentValue[, index[, iterable]]) {
 ### Examples
 
 ```js
-map({ a: 1, b: 2 }, x => x * 2);
+map(x => x * 2)({ a: 1, b: 2 });
 // { a: 2, b: 4 }
-map([1, 2], x => x * 2);
+map(x => x * 2)([1, 2]);
 // [ 2, 4 ]
-map(new Set([1, 2]), x => x * 2);
+map(x => x * 2)(new Set([1, 2]));
 // Set(2) {2, 4}
-map(new Map([["a", 1], ["b", 2]]), x => x * 2);
+map(x => x * 2)(new Map([["a", 1], ["b", 2]]));
 // Map(2) {"a" => 2, "b" => 4}
-map("ab", x => x.repeat(2));
+map(x => x.repeat(2))("ab");
 // 'aabb'
 ```
 
 ## ForEach
 
 ```js
-function forEach(iterable, callback[, thisArg]) {
+function forEach(callback[, thisArg]) {
+  return function (iterable) {
+  }
 }
 
 function callback(currentValue[, index[, iterable]]) {
@@ -64,19 +68,19 @@ function callback(currentValue[, index[, iterable]]) {
 ### Examples
 
 ```js
-forEach({ a: 1, b: 2 }, x => console.log(x * 2));
+forEach(x => console.log(x * 2))({ a: 1, b: 2 });
 // 2
 // 4
-forEach([1, 2], x => console.log(x * 2));
+forEach(x => console.log(x * 2))([1, 2]);
 // 2
 // 4
-forEach(new Set([1, 2]), x => console.log(x * 2));
+forEach(x => console.log(x * 2))(new Set([1, 2]));
 // 2
 // 4
-forEach(new Map([["a", 1], ["b", 2]]), x => console.log(x * 2));
+forEach(x => console.log(x * 2))(new Map([["a", 1], ["b", 2]]));
 // 2
 // 4
-forEach("ab", x => console.log(x.repeat(2)));
+forEach(x => console.log(x.repeat(2)))("ab");
 // aa
 // bb
 ```
@@ -84,8 +88,10 @@ forEach("ab", x => console.log(x.repeat(2)));
 ## Filter
 
 ```js
-function filter(iterable, callback[, thisArg]) {
-  // return new iterable of the input iterable type
+function filter(callback[, thisArg]) {
+  return function (iterable) {
+    // return new iterable of the input iterable type
+  }
 }
 
 function callback(currentValue[, index[, iterable]]) {
@@ -104,14 +110,14 @@ function callback(currentValue[, index[, iterable]]) {
 ### Examples
 
 ```js
-filter({ a: 1, b: 2 }, x => x % 2);
+filter(x => x % 2)({ a: 1, b: 2 });
 // { a: 1 }
-filter([1, 2], x => x % 2);
+filter(x => x % 2)([1, 2]);
 // [ 1 ]
-filter(new Set([1, 2]), x => x % 2);
+filter(x => x % 2)(new Set([1, 2]));
 // Set(1) {1}
-filter(new Map([["a", 1], ["b", 2]]), x => x % 2);
+filter(x => x % 2)(new Map([["a", 1], ["b", 2]]));
 // Map(1) {"a" => 1}
-filter("12", x => x => x % 2);
+filter(x => x => x % 2)("12");
 // '1'
 ```

@@ -8,7 +8,7 @@ function* apply(iterable, callback, thisArg) {
   }
 }
 
-const map = (iterable, callback, thisArg) => {
+const map = (callback, thisArg) => iterable => {
   const type = checkType(iterable);
   return generateIterable(apply(iterable, callback, thisArg), type);
 };
