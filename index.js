@@ -1,8 +1,8 @@
-const len = require("./len");
+const len = require('./len');
 
-const map = require("./map");
-const filter = require("./filter");
-const forEach = require("./forEach");
-const reduce = require("./reduce");
+const map = require('./map');
+const filter = require('./filter');
+const forEach = require('./forEach');
+const reduce = require('./reduce');
 
-const range = require("./range");
+const range = require('./range');

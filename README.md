@@ -8,6 +8,41 @@ function* range([from,] to[, step]) {
 }
 ```
 
+## Zip
+
+```js
+function* zip(iterables) {
+  // yield [currentValues, indexes, iterables]
+}
+```
+
+### Supported iterables
+
+- array
+- string
+- Map
+- Set
+- Object
+
+### Examples
+
+```js
+for (let [currentValues, indexes, iterables] of zip([
+  '123',
+  [1, 2, 3],
+  { a: 1, b: 2, c: 3 },
+])) {
+  console.log(currentValues);
+  // [ '1', 1, 1 ]
+  // [ '2', 2, 2 ]
+  // [ '3', 3, 3 ]
+  console.log(indexes);
+  // [ 0, 0, 'a' ]
+  // [ 1, 1, 'b' ]
+  // [ 2, 2, 'c' ]
+}
+```
+
 ## Len
 
 ```js
@@ -55,9 +90,9 @@ map(x => x * 2)([1, 2]);
 // [ 2, 4 ]
 map(x => x * 2)(new Set([1, 2]));
 // Set(2) {2, 4}
-map(x => x * 2)(new Map([["a", 1], ["b", 2]]));
+map(x => x * 2)(new Map([['a', 1], ['b', 2]]));
 // Map(2) {"a" => 2, "b" => 4}
-map(x => x.repeat(2))("ab");
+map(x => x.repeat(2))('ab');
 // 'aabb'
 ```
 
@@ -93,10 +128,10 @@ forEach(x => console.log(x * 2))([1, 2]);
 forEach(x => console.log(x * 2))(new Set([1, 2]));
 // 2
 // 4
-forEach(x => console.log(x * 2))(new Map([["a", 1], ["b", 2]]));
+forEach(x => console.log(x * 2))(new Map([['a', 1], ['b', 2]]));
 // 2
 // 4
-forEach(x => console.log(x.repeat(2)))("ab");
+forEach(x => console.log(x.repeat(2)))('ab');
 // aa
 // bb
 ```
@@ -132,9 +167,9 @@ filter(x => x % 2)([1, 2]);
 // [ 1 ]
 filter(x => x % 2)(new Set([1, 2]));
 // Set(1) {1}
-filter(x => x % 2)(new Map([["a", 1], ["b", 2]]));
+filter(x => x % 2)(new Map([['a', 1], ['b', 2]]));
 // Map(1) {"a" => 1}
-filter(x => x => x % 2)("12");
+filter(x => x => x % 2)('12');
 // '1'
 ```
 
@@ -169,8 +204,8 @@ filter(x => x % 2)([1, 2]);
 // [ 1 ]
 filter(x => x % 2)(new Set([1, 2]));
 // Set(1) {1}
-filter(x => x % 2)(new Map([["a", 1], ["b", 2]]));
+filter(x => x % 2)(new Map([['a', 1], ['b', 2]]));
 // Map(1) {"a" => 1}
-filter(x => x => x % 2)("12");
+filter(x => x => x % 2)('12');
 // '1'
 ```
