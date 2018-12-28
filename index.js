@@ -6,3 +6,4 @@ const forEach = require('./forEach');
 const reduce = require('./reduce');
 
 const range = require('./range');
+const zip = require('./zip');

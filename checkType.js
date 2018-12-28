@@ -1,11 +1,11 @@
-const ARRAY = Symbol("Array");
-const STRING = Symbol("String");
-const SET = Symbol("Set");
-const MAP = Symbol("Map");
-const OBJECT = Symbol("Object");
+const ARRAY = Symbol('Array');
+const STRING = Symbol('String');
+const SET = Symbol('Set');
+const MAP = Symbol('Map');
+const OBJECT = Symbol('Object');
 
 const checkType = element => {
-  if (typeof element === "string" || element instanceof String) {
+  if (typeof element === 'string' || element instanceof String) {
     return STRING;
   }
   if (Array.isArray(element)) {
@@ -17,7 +17,7 @@ const checkType = element => {
   if (element instanceof Map) {
     return MAP;
   }
-  if (typeof element === "object" || element instanceof Object) {
+  if (typeof element === 'object' || element instanceof Object) {
     return OBJECT;
   }
   return null;
@@ -30,6 +30,6 @@ module.exports = {
     String: STRING,
     Set: SET,
     Map: MAP,
-    Object: OBJECT
-  }
+    Object: OBJECT,
+  },
 };

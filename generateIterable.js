@@ -1,7 +1,7 @@
-const { type: types } = require("./checkType");
+const { type: types } = require('./checkType');
 
 const generateString = iterable => {
-  let string = "";
+  let string = '';
   for (let step of iterable) {
     string += step[0];
   }

@@ -1,4 +1,4 @@
-const iterate = require("./iterate");
+const iterate = require('./iterate');
 
 function reduce(callback, initialValue, thisArg) {
   return iterable => {

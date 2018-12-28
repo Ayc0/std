@@ -1,6 +1,6 @@
-const iterate = require("./iterate");
-const { checkType } = require("./checkType");
-const generateIterable = require("./generateIterable");
+const iterate = require('./iterate');
+const { checkType } = require('./checkType');
+const generateIterable = require('./generateIterable');
 
 function* apply(iterable, callback, thisArg) {
   for (let step of iterate(iterable)) {
