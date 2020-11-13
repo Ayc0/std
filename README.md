@@ -238,7 +238,7 @@ reduce((acc, x) => acc + Number(x), 0)('12');
 ```js
 function take(limit) {
   return function (iterable) {
-    // return new iterable of the input iterable type
+    // return new iterable with only the <limit> first items
   };
 }
 ```
@@ -276,7 +276,7 @@ take(1)('ab');
 ```js
 function drop(limit) {
   return function (iterable) {
-    // return new iterable of the input iterable type
+    // return new iterable with <limit> first item trimmed
   };
 }
 ```
@@ -307,4 +307,130 @@ drop(1)(
 // Map(1) {"b" => 2}
 drop(1)('ab');
 // 'b'
+```
+
+## Find
+
+```js
+function find(callback[, thisArg]) {
+  return function (iterable) {
+    // return the element and its key or undefined
+  }
+}
+
+function callback(currentValue[, index[, iterable]]) {
+  // return if you it matches your element or not
+}
+```
+
+### Supported iterables
+
+- array
+- string
+- Map
+- Set
+- Object
+
+### Examples
+
+```js
+find(x => x % 2)({ a: 1, b: 2 });
+// [ 1, 'a' ]
+find(x => x % 2)([1, 2]);
+// [ 1, 0 ]
+find(x => x % 2)(new Set([1, 2]));
+// [ 1, 0 ]
+find(x => x % 2)(
+  new Map([
+    ['a', 1],
+    ['b', 2],
+  ]),
+);
+// [ 1, 'a' ]
+find(x => x % 2)('12');
+// [ '1', 0 ]
+```
+
+## Every
+
+```js
+function every(callback[, thisArg]) {
+  return function (iterable) {
+    // return true if all elements match the callback
+  }
+}
+
+function callback(currentValue[, index[, iterable]]) {
+  // return if you it matches your element or not
+}
+```
+
+### Supported iterables
+
+- array
+- string
+- Map
+- Set
+- Object
+
+### Examples
+
+```js
+every(x => x <= 2)({ a: 1, b: 2 });
+// true
+every(x => x <= 2)([1, 2]);
+// true
+every(x => x <= 2)(new Set([1, 2]));
+// true
+every(x => x <= 2)(
+  new Map([
+    ['a', 1],
+    ['b', 2],
+  ]),
+);
+// true
+every(x => x === '1')('12');
+// false
+```
+
+## Some
+
+```js
+function some(callback[, thisArg]) {
+  return function (iterable) {
+    // return true if at least 1 element matches the callback
+  }
+}
+
+function callback(currentValue[, index[, iterable]]) {
+  // return if you it matches your element or not
+}
+```
+
+### Supported iterables
+
+- array
+- string
+- Map
+- Set
+- Object
+
+### Examples
+
+```js
+some(x => x <= 2)({ a: 1, b: 2 });
+// true
+some(x => x <= 2)([1, 2]);
+// true
+some(x => x <= 2)(new Set([1, 2]));
+// true
+some(x => x <= 2)(
+  new Map([
+    ['a', 1],
+    ['b', 2],
+  ]),
+);
+// true
+some(x => x === '1')('12');
+// true
 ```

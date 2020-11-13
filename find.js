@@ -4,7 +4,7 @@ function find(callback, thisArg) {
   return iterable => {
     for (const step of iterate(iterable)) {
       if (callback.apply(thisArg, step)) {
-        return step;
+        return [step[0], step[1]];
       }
     }
   };

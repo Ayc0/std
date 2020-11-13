@@ -6,7 +6,7 @@ describe('find()', () => {
     const run = find(find3);
 
     const input = '543210';
-    expect(run(input)).toEqual(['3', 2, input]);
+    expect(run(input)).toEqual(['3', 2]);
 
     expect(find3).toHaveBeenCalledTimes(3);
     expect(find3).toHaveBeenNthCalledWith(1, '5', 0, input);
@@ -19,7 +19,7 @@ describe('find()', () => {
     const run = find(find3);
 
     const input = [5, 4, 3, 2, 1, 0];
-    expect(run(input)).toEqual([3, 2, input]);
+    expect(run(input)).toEqual([3, 2]);
 
     expect(find3).toHaveBeenCalledTimes(3);
     expect(find3).toHaveBeenNthCalledWith(1, 5, 0, input);
@@ -32,7 +32,7 @@ describe('find()', () => {
     const run = find(find3);
 
     const input = new Set([5, 4, 3, 2, 1, 0]);
-    expect(run(input)).toEqual([3, null, input]);
+    expect(run(input)).toEqual([3, null]);
 
     expect(find3).toHaveBeenCalledTimes(3);
     expect(find3).toHaveBeenNthCalledWith(1, 5, null, input);
@@ -45,7 +45,7 @@ describe('find()', () => {
     const run = find(find3);
 
     const input = { a: 5, b: 4, c: 3, d: 2, e: 1, f: 0 };
-    expect(run(input)).toEqual([3, 'c', input]);
+    expect(run(input)).toEqual([3, 'c']);
 
     expect(find3).toHaveBeenCalledTimes(3);
     expect(find3).toHaveBeenNthCalledWith(1, 5, 'a', input);
@@ -65,7 +65,7 @@ describe('find()', () => {
       ['e', 1],
       ['f', 0],
     ]);
-    expect(run(input)).toEqual([3, 'c', input]);
+    expect(run(input)).toEqual([3, 'c']);
 
     expect(find3).toHaveBeenCalledTimes(3);
     expect(find3).toHaveBeenNthCalledWith(1, 5, 'a', input);
