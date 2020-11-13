@@ -6,6 +6,7 @@
   "repository": "git@github.com:Ayc0/std.git",
   "author": "Ayc0 <ayc0.benj@gmail.com>",
   "license": "MIT",
+  "sideEffects": false,
   "scripts": {
     "test": "jest"
   },
