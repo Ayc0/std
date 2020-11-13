@@ -1,4 +1,4 @@
-# std
+# Standard
 
 ## Range
 
@@ -231,4 +231,80 @@ reduce(
 // Map(1) {"a" => 1}
 reduce((acc, x) => acc + Number(x), 0)('12');
 // '1'
+```
+
+## Take
+
+```js
+function take(limit) {
+  return function (iterable) {
+    // return new iterable of the input iterable type
+  };
+}
+```
+
+### Supported iterables
+
+- array
+- string
+- Map
+- Set
+- Object
+
+### Examples
+
+```js
+take(1)({ a: 1, b: 2 });
+// { a: 1 }
+take(1)([1, 2]);
+// [ 1 ]
+take(1)(new Set([1, 2]));
+// Set(1) {1}
+take(1)(
+  new Map([
+    ['a', 1],
+    ['b', 2],
+  ]),
+);
+// Map(1) {"a" => 1}
+take(1)('ab');
+// 'a'
+```
+
+## Drop
+
+```js
+function drop(limit) {
+  return function (iterable) {
+    // return new iterable of the input iterable type
+  };
+}
+```
+
+### Supported iterables
+
+- array
+- string
+- Map
+- Set
+- Object
+
+### Examples
+
+```js
+drop(1)({ a: 1, b: 2 });
+// { b: 2 }
+drop(1)([1, 2]);
+// [ 2 ]
+drop(1)(new Set([1, 2]));
+// Set(1) {2}
+drop(1)(
+  new Map([
+    ['a', 1],
+    ['b', 2],
+  ]),
+);
+// Map(1) {"b" => 2}
+drop(1)('ab');
+// 'b'
 ```
