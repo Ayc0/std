@@ -1,9 +1,11 @@
-const len = require('./len');
+module.exports = {
+  len: require('./len'),
 
-const map = require('./map');
-const filter = require('./filter');
-const forEach = require('./forEach');
-const reduce = require('./reduce');
+  map: require('./map'),
+  filter: require('./filter'),
+  forEach: require('./forEach'),
+  reduce: require('./reduce'),
 
-const range = require('./range');
-const zip = require('./zip');
+  range: require('./range'),
+  zip: require('./zip'),
+};
