@@ -1,2 +1,6 @@
 __tests__/
 .github/
+.prettierrc
+.editorconfig
+.gitignore
+
