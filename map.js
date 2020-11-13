@@ -3,7 +3,7 @@ const { checkType } = require('./utils/checkType');
 const generateIterable = require('./utils/generateIterable');
 
 function* apply(iterable, callback, thisArg) {
-  for (let step of iterate(iterable)) {
+  for (const step of iterate(iterable)) {
     yield [callback.apply(thisArg, step), step[1]];
   }
 }

@@ -10,7 +10,7 @@ const len = iterable => {
   }
   if (type === types.Object) {
     let size = 0;
-    for (let key in iterable) {
+    for (const key in iterable) {
       if (iterable.hasOwnProperty(key)) {
         size++;
       }

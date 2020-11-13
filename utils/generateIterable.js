@@ -2,7 +2,7 @@ const { type: types } = require('./checkType');
 
 const generateString = iterable => {
   let string = '';
-  for (let step of iterable) {
+  for (const step of iterable) {
     string += step[0];
   }
   return string;
@@ -10,7 +10,7 @@ const generateString = iterable => {
 
 const generateArray = iterable => {
   let array = [];
-  for (let step of iterable) {
+  for (const step of iterable) {
     array.push(step[0]);
   }
   return array;
@@ -18,7 +18,7 @@ const generateArray = iterable => {
 
 const generateSet = iterable => {
   let set = new Set();
-  for (let step of iterable) {
+  for (const step of iterable) {
     set.add(step[0]);
   }
   return set;
@@ -26,7 +26,7 @@ const generateSet = iterable => {
 
 const generateMap = iterable => {
   let map = new Map();
-  for (let step of iterable) {
+  for (const step of iterable) {
     map.set(step[1], step[0]);
   }
   return map;
@@ -34,7 +34,7 @@ const generateMap = iterable => {
 
 const generateObject = iterable => {
   let object = {};
-  for (let step of iterable) {
+  for (const step of iterable) {
     object[step[1]] = step[0];
   }
   return object;

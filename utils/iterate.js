@@ -11,19 +11,19 @@ function* iterate(iterable) {
     return;
   }
   if (type === types.Map) {
-    for (let key of iterable.keys()) {
+    for (const key of iterable.keys()) {
       yield [iterable.get(key), key, iterable];
     }
     return;
   }
   if (type === types.Set) {
-    for (let element of iterable) {
+    for (const element of iterable) {
       yield [element, null, iterable];
     }
     return;
   }
   if (type === types.Object) {
-    for (let key in iterable) {
+    for (const key in iterable) {
       if (iterable.hasOwnProperty(key)) {
         yield [iterable[key], key, iterable];
       }

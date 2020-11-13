@@ -3,7 +3,7 @@ const iterate = require('./utils/iterate');
 function reduce(callback, initialValue, thisArg) {
   return iterable => {
     let i = 0;
-    for (let step of iterate(iterable)) {
+    for (const step of iterate(iterable)) {
       if (arguments.length === 1 && i == 0) {
         initialValue = step[0];
       }

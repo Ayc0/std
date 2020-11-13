@@ -3,7 +3,7 @@ const { checkType } = require('./utils/checkType');
 const generateIterable = require('./utils/generateIterable');
 
 function* apply(iterable, callback, thisArg) {
-  for (let step of iterate(iterable)) {
+  for (const step of iterate(iterable)) {
     const shouldKeepElement = callback.apply(thisArg, step);
     if (shouldKeepElement) {
       yield [step[0], step[1]];

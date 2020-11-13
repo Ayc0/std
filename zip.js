@@ -4,7 +4,7 @@ const iterate = require('./utils/iterate');
 function* zip(iterables) {
   let previousLength = null;
   let currentLength = null;
-  for (let iterable of iterables) {
+  for (const iterable of iterables) {
     currentLength = len(iterable);
     if (currentLength !== previousLength && previousLength !== null) {
       throw new Error('Every iterable should have the same length');
@@ -15,7 +15,7 @@ function* zip(iterables) {
   for (let index = 0; index < currentLength; index++) {
     const elements = [];
     const indexes = [];
-    for (let iterable of trueIterables) {
+    for (const iterable of trueIterables) {
       const step = iterable.next().value;
       elements.push(step[0]);
       indexes.push(step[1]);
