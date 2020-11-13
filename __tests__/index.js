@@ -1,30 +1,29 @@
+const fs = require('fs');
+const path = require('path');
+
+const modules = fs
+  .readdirSync(path.join(__dirname, '..'))
+  .filter(f => path.extname(f) === '.js' && f !== 'index.js')
+  .map(f => path.basename(f, '.js'));
+
 const std = require('..');
 
-const len = require('../len');
+describe('exports', () => {
+  for (const mod of modules) {
+    it(`should export ${mod}`, () => {
+      expect(std[mod]).toBe(require(`../${mod}`));
+    });
+  }
+});
 
-const map = require('../map');
-const filter = require('../filter');
-const forEach = require('../forEach');
-const reduce = require('../reduce');
-
-const range = require('../range');
-const zip = require('../zip');
-
-const find = require('../find');
-const some = require('../some');
-const every = require('../every');
-
-describe('std', () => {
-  it('should export the right functions', () => {
-    expect(std.len).toBe(len);
-    expect(std.map).toBe(map);
-    expect(std.filter).toBe(filter);
-    expect(std.forEach).toBe(forEach);
-    expect(std.reduce).toBe(reduce);
-    expect(std.range).toBe(range);
-    expect(std.zip).toBe(zip);
-    expect(std.find).toBe(find);
-    expect(std.some).toBe(some);
-    expect(std.every).toBe(every);
-  });
+describe('Documentation', () => {
+  const readme = fs
+    .readFileSync(path.join(__dirname, '..', 'README.md'))
+    .toString();
+  for (const mod of modules) {
+    it(`should document ${mod}`, () => {
+      const isDocumented = readme.includes(`${mod}(`);
+      expect(isDocumented).toBe(true);
+    });
+  }
 });
