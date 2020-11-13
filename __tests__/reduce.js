@@ -1,6 +1,13 @@
 const reduce = require('../reduce');
 
 describe('reduce()', () => {
+  it('should work with no initial value', () => {
+    const sum = jest.fn((acc, cur) => acc + cur);
+    const run = reduce(sum);
+
+    const input = [5, 4, 3, 2, 1, 0];
+    expect(run(input)).toEqual(15);
+  });
   it('should work with strings', () => {
     const sum = jest.fn((acc, cur) => acc + Number(cur));
     const run = reduce(sum, 0);
