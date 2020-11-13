@@ -184,7 +184,7 @@ filter(x => x % 2)(
   ]),
 );
 // Map(1) {"a" => 1}
-filter(x => x => x % 2)('12');
+filter(x => x % 2)('12');
 // '1'
 ```
 
@@ -213,19 +213,22 @@ function callback(accumulator, currentValue[, index[, iterable]]) {
 ### Examples
 
 ```js
-filter(x => x % 2)({ a: 1, b: 2 });
+reduce((acc, x) => acc + x, 0)({ a: 1, b: 2 });
 // { a: 1 }
-filter(x => x % 2)([1, 2]);
+reduce((acc, x) => acc + x, 0)([1, 2]);
 // [ 1 ]
-filter(x => x % 2)(new Set([1, 2]));
+reduce((acc, x) => acc + x, 0)(new Set([1, 2]));
 // Set(1) {1}
-filter(x => x % 2)(
+reduce(
+  (acc, x) => acc + x,
+  0,
+)(
   new Map([
     ['a', 1],
     ['b', 2],
   ]),
 );
 // Map(1) {"a" => 1}
-filter(x => x => x % 2)('12');
+reduce((acc, x) => acc + Number(x), 0)('12');
 // '1'
 ```
