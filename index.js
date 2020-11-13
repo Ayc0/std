@@ -8,4 +8,8 @@ module.exports = {
 
   range: require('./range'),
   zip: require('./zip'),
+
+  find: require('./find'),
+  some: require('./some'),
+  every: require('./every'),
 };

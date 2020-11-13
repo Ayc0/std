@@ -10,6 +10,10 @@ const reduce = require('../reduce');
 const range = require('../range');
 const zip = require('../zip');
 
+const find = require('../find');
+const some = require('../some');
+const every = require('../every');
+
 describe('std', () => {
   it('should export the right functions', () => {
     expect(std.len).toBe(len);
@@ -19,5 +23,8 @@ describe('std', () => {
     expect(std.reduce).toBe(reduce);
     expect(std.range).toBe(range);
     expect(std.zip).toBe(zip);
+    expect(std.find).toBe(find);
+    expect(std.some).toBe(some);
+    expect(std.every).toBe(every);
   });
 });
