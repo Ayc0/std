@@ -1,4 +1,4 @@
-const { checkType, type: types } = require('./checkType');
+const { checkType, type: types } = require('./utils/checkType');
 
 const len = iterable => {
   const type = checkType(iterable);

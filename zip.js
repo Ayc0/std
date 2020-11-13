@@ -1,5 +1,5 @@
 const len = require('./len');
-const iterate = require('./iterate');
+const iterate = require('./utils/iterate');
 
 function* zip(iterables) {
   let previousLength = null;

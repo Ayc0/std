@@ -1,4 +1,4 @@
-const iterate = require('./iterate');
+const iterate = require('./utils/iterate');
 
 const forEach = (callback, thisArg) => iterable => {
   for (let step of iterate(iterable)) {
