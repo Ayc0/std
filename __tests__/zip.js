@@ -1,7 +1,7 @@
 const zip = require('../zip');
 
 describe('zip()', () => {
-  it('should work with strings', () => {
+  it('should work with similar sizes', () => {
     const string = '543210';
     const array = [5, 4, 3, 2, 1, 0];
     const set = new Set([5, 4, 3, 2, 1, 0]);

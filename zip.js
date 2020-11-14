@@ -1,24 +1,28 @@
-const len = require('./len');
 const iterate = require('./utils/iterate');
 
+const genArray = length => new Array(length).fill(null);
+
 function* zip(iterables) {
-  let previousLength = null;
-  let currentLength = null;
-  for (const iterable of iterables) {
-    currentLength = len(iterable);
-    if (currentLength !== previousLength && previousLength !== null) {
-      throw new Error('Every iterable should have the same length');
-    }
-    previousLength = currentLength;
-  }
   const trueIterables = iterables.map(iterate);
-  for (let index = 0; index < currentLength; index++) {
-    const elements = [];
-    const indexes = [];
+  const length = iterables.length;
+  while (true) {
+    const elements = genArray(length);
+    const indexes = genArray(length);
+    let isDone = true;
+    let i = -1;
     for (const iterable of trueIterables) {
-      const step = iterable.next().value;
-      elements.push(step[0]);
-      indexes.push(step[1]);
+      i++;
+      const next = iterable.next();
+      if (next.done) {
+        continue;
+      }
+      isDone = false;
+      const step = next.value;
+      elements[i] = step[0];
+      indexes[i] = step[1];
+    }
+    if (isDone) {
+      break;
     }
     yield [elements, indexes, iterables];
   }

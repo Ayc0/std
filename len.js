@@ -11,7 +11,7 @@ const len = iterable => {
   if (type === types.Object) {
     let size = 0;
     for (const key in iterable) {
-      if (iterable.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(iterable, key)) {
         size++;
       }
     }
