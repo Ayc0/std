@@ -17,6 +17,13 @@ const len = iterable => {
     }
     return size;
   }
+  if (type === types.Iterator) {
+    let size = 0;
+    for (const step of iterable) {
+      size++;
+    }
+    return size;
+  }
   return 0;
 };
 

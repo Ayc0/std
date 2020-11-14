@@ -40,6 +40,15 @@ const generateObject = iterable => {
   return object;
 };
 
+const generateIterator = iterable => {
+  function* iterator() {
+    for (const step of iterable) {
+      yield step[0];
+    }
+  }
+  return iterator();
+};
+
 const generateIterable = (iterable, type) => {
   if (type === types.Array) {
     return generateArray(iterable);
@@ -55,6 +64,9 @@ const generateIterable = (iterable, type) => {
   }
   if (type === types.Object) {
     return generateObject(iterable);
+  }
+  if (type === types.Iterator) {
+    return generateIterator(iterable);
   }
 };
 

@@ -16,7 +16,7 @@ function* iterate(iterable) {
     }
     return;
   }
-  if (type === types.Set) {
+  if (type === types.Set || type === types.Iterator) {
     for (const element of iterable) {
       yield [element, null, iterable];
     }

@@ -3,6 +3,7 @@ const STRING = Symbol('String');
 const SET = Symbol('Set');
 const MAP = Symbol('Map');
 const OBJECT = Symbol('Object');
+const ITERATOR = Symbol('Iterator');
 
 const checkType = element => {
   if (typeof element === 'string' || element instanceof String) {
@@ -16,6 +17,9 @@ const checkType = element => {
   }
   if (element instanceof Map) {
     return MAP;
+  }
+  if (element[Symbol.iterator]) {
+    return ITERATOR;
   }
   if (typeof element === 'object' || element instanceof Object) {
     return OBJECT;
@@ -31,5 +35,6 @@ module.exports = {
     Set: SET,
     Map: MAP,
     Object: OBJECT,
+    Iterator: ITERATOR,
   },
 };
