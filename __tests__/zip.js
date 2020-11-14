@@ -53,4 +53,37 @@ describe('zip()', () => {
       [string, array, set, object, map],
     ]);
   });
+
+  it('should work with different sizes', () => {
+    const array2 = [1, 0];
+    const array4 = [3, 2, 1, 0];
+
+    const check = jest.fn();
+
+    for (const step of zip([array2, array4])) {
+      check(step);
+    }
+
+    expect(check).toHaveBeenCalledTimes(4);
+    expect(check).toHaveBeenNthCalledWith(1, [
+      [1, 3],
+      [0, 0],
+      [array2, array4],
+    ]);
+    expect(check).toHaveBeenNthCalledWith(2, [
+      [0, 2],
+      [1, 1],
+      [array2, array4],
+    ]);
+    expect(check).toHaveBeenNthCalledWith(3, [
+      [null, 1],
+      [null, 2],
+      [array2, array4],
+    ]);
+    expect(check).toHaveBeenNthCalledWith(4, [
+      [null, 0],
+      [null, 3],
+      [array2, array4],
+    ]);
+  });
 });
