@@ -16,11 +16,20 @@ function* iterate(iterable) {
     }
     return;
   }
-  if (type === types.Set || type === types.Iterator) {
+  if (type === types.Set) {
     for (const element of iterable) {
       yield [element, null, iterable];
     }
     return;
+  }
+  if (type === types.Iterator) {
+    while (true) {
+      const next = iterable.next();
+      if (next.done) {
+        return;
+      }
+      yield [next.value, null, iterable];
+    }
   }
   if (type === types.Object) {
     for (const key in iterable) {
