@@ -87,4 +87,28 @@ describe('forEach()', () => {
     expect(run).toHaveBeenNthCalledWith(5, 1, 'e', input);
     expect(run).toHaveBeenNthCalledWith(6, 0, 'f', input);
   });
+
+  it('should work with iterators', () => {
+    const run = jest.fn();
+    const check = forEach(run);
+
+    function* iter() {
+      yield 5;
+      yield 4;
+      yield 3;
+      yield 2;
+      yield 1;
+      yield 0;
+    }
+    const input = iter();
+    check(input);
+
+    expect(run).toHaveBeenCalledTimes(6);
+    expect(run).toHaveBeenNthCalledWith(1, 5, null, input);
+    expect(run).toHaveBeenNthCalledWith(2, 4, null, input);
+    expect(run).toHaveBeenNthCalledWith(3, 3, null, input);
+    expect(run).toHaveBeenNthCalledWith(4, 2, null, input);
+    expect(run).toHaveBeenNthCalledWith(5, 1, null, input);
+    expect(run).toHaveBeenNthCalledWith(6, 0, null, input);
+  });
 });

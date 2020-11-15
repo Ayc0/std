@@ -23,6 +23,7 @@ function* zip(iterables) {
 - Map
 - Set
 - Object
+- iterators
 
 ### Examples
 
@@ -58,6 +59,7 @@ function len(iterable) {
 - Map
 - Set
 - Object
+- iterators
 
 ## Map
 
@@ -80,6 +82,7 @@ function callback(currentValue[, index[, iterable]]) {
 - Map
 - Set
 - Object
+- iterators
 
 ### Examples
 
@@ -120,6 +123,7 @@ function callback(currentValue[, index[, iterable]]) {
 - Map
 - Set
 - Object
+- iterators
 
 ### Examples
 
@@ -167,6 +171,7 @@ function callback(currentValue[, index[, iterable]]) {
 - Map
 - Set
 - Object
+- iterators
 
 ### Examples
 
@@ -209,6 +214,7 @@ function callback(accumulator, currentValue[, index[, iterable]]) {
 - Map
 - Set
 - Object
+- iterators
 
 ### Examples
 
@@ -250,6 +256,7 @@ function take(limit) {
 - Map
 - Set
 - Object
+- iterators
 
 ### Examples
 
@@ -288,6 +295,7 @@ function drop(limit) {
 - Map
 - Set
 - Object
+- iterators
 
 ### Examples
 
@@ -330,6 +338,7 @@ function callback(currentValue[, index[, iterable]]) {
 - Map
 - Set
 - Object
+- iterators
 
 ### Examples
 
@@ -372,6 +381,7 @@ function callback(currentValue[, index[, iterable]]) {
 - Map
 - Set
 - Object
+- iterators
 
 ### Examples
 
@@ -414,6 +424,7 @@ function callback(currentValue[, index[, iterable]]) {
 - Map
 - Set
 - Object
+- iterators
 
 ### Examples
 

@@ -73,6 +73,33 @@ describe('some()', () => {
     expect(has3).toHaveBeenNthCalledWith(3, 3, 'c', input);
   });
 
+  it('should work with iterators', () => {
+    const has3 = jest.fn(x => x === 3);
+    const run = some(has3);
+
+    function* iter() {
+      yield 5;
+      yield 4;
+      yield 3;
+      yield 2;
+      yield 1;
+      yield 0;
+    }
+    const input = iter();
+    expect(run(input)).toEqual(true);
+
+    expect(input.next().done).toBe(false);
+
+    // this is required otherwise the `toHaveBeenNthCalledWith` fail
+    // I suspect an issue with the nb of step remaining
+    input.return();
+
+    expect(has3).toHaveBeenCalledTimes(3);
+    expect(has3).toHaveBeenNthCalledWith(1, 5, null, input);
+    expect(has3).toHaveBeenNthCalledWith(2, 4, null, input);
+    expect(has3).toHaveBeenNthCalledWith(3, 3, null, input);
+  });
+
   it('should work when doesn’t some value', () => {
     const nope = jest.fn(x => false);
     const run = some(nope);

@@ -14,43 +14,52 @@ describe('zip()', () => {
       ['e', 1],
       ['f', 0],
     ]);
+    function* iter() {
+      yield 5;
+      yield 4;
+      yield 3;
+      yield 2;
+      yield 1;
+      yield 0;
+    }
+    const iterator = iter();
 
     const check = jest.fn();
 
-    for (const step of zip([string, array, set, object, map])) {
+    for (const step of zip([string, array, set, object, map, iterator])) {
       check(step);
     }
 
     expect(check).toHaveBeenCalledTimes(6);
     expect(check).toHaveBeenNthCalledWith(1, [
-      ['5', 5, 5, 5, 5],
-      [0, 0, null, 'a', 'a'],
-      [string, array, set, object, map],
+      ['5', 5, 5, 5, 5, 5],
+      [0, 0, null, 'a', 'a', null],
+      [string, array, set, object, map, iterator],
     ]);
     expect(check).toHaveBeenNthCalledWith(2, [
-      ['4', 4, 4, 4, 4],
-      [1, 1, null, 'b', 'b'],
-      [string, array, set, object, map],
+      ['4', 4, 4, 4, 4, 4],
+      [1, 1, null, 'b', 'b', null],
+      [string, array, set, object, map, iterator],
     ]);
     expect(check).toHaveBeenNthCalledWith(3, [
-      ['3', 3, 3, 3, 3],
-      [2, 2, null, 'c', 'c'],
-      [string, array, set, object, map],
+      ['3', 3, 3, 3, 3, 3],
+      [2, 2, null, 'c', 'c', null],
+      [string, array, set, object, map, iterator],
     ]);
     expect(check).toHaveBeenNthCalledWith(4, [
-      ['2', 2, 2, 2, 2],
-      [3, 3, null, 'd', 'd'],
-      [string, array, set, object, map],
+      ['2', 2, 2, 2, 2, 2],
+      [3, 3, null, 'd', 'd', null],
+      [string, array, set, object, map, iterator],
     ]);
     expect(check).toHaveBeenNthCalledWith(5, [
-      ['1', 1, 1, 1, 1],
-      [4, 4, null, 'e', 'e'],
-      [string, array, set, object, map],
+      ['1', 1, 1, 1, 1, 1],
+      [4, 4, null, 'e', 'e', null],
+      [string, array, set, object, map, iterator],
     ]);
     expect(check).toHaveBeenNthCalledWith(6, [
-      ['0', 0, 0, 0, 0],
-      [5, 5, null, 'f', 'f'],
-      [string, array, set, object, map],
+      ['0', 0, 0, 0, 0, 0],
+      [5, 5, null, 'f', 'f', null],
+      [string, array, set, object, map, iterator],
     ]);
   });
 

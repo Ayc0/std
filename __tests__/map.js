@@ -96,4 +96,32 @@ describe('map()', () => {
     expect(times2).toHaveBeenNthCalledWith(5, 1, 'e', input);
     expect(times2).toHaveBeenNthCalledWith(6, 0, 'f', input);
   });
+
+  it('should work with iterators', () => {
+    const times2 = jest.fn(x => x * 2);
+    const check = map(times2);
+
+    function* iter() {
+      yield 5;
+      yield 4;
+      yield 3;
+      yield 2;
+      yield 1;
+      yield 0;
+    }
+    const input = iter();
+    const output = [];
+    for (const x of check(input)) {
+      output.push(x);
+    }
+    expect(output).toEqual([10, 8, 6, 4, 2, 0]);
+
+    expect(times2).toHaveBeenCalledTimes(6);
+    expect(times2).toHaveBeenNthCalledWith(1, 5, null, input);
+    expect(times2).toHaveBeenNthCalledWith(2, 4, null, input);
+    expect(times2).toHaveBeenNthCalledWith(3, 3, null, input);
+    expect(times2).toHaveBeenNthCalledWith(4, 2, null, input);
+    expect(times2).toHaveBeenNthCalledWith(5, 1, null, input);
+    expect(times2).toHaveBeenNthCalledWith(6, 0, null, input);
+  });
 });

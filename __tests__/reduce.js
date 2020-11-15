@@ -94,4 +94,28 @@ describe('reduce()', () => {
     expect(sum).toHaveBeenNthCalledWith(5, 14, 1, 'e', input);
     expect(sum).toHaveBeenNthCalledWith(6, 15, 0, 'f', input);
   });
+
+  it('should work with iterators', () => {
+    const sum = jest.fn((acc, cur) => acc + cur);
+    const run = reduce(sum, 0);
+
+    function* iter() {
+      yield 5;
+      yield 4;
+      yield 3;
+      yield 2;
+      yield 1;
+      yield 0;
+    }
+    const input = iter();
+    expect(run(input)).toEqual(15);
+
+    expect(sum).toHaveBeenCalledTimes(6);
+    expect(sum).toHaveBeenNthCalledWith(1, 0, 5, null, input);
+    expect(sum).toHaveBeenNthCalledWith(2, 5, 4, null, input);
+    expect(sum).toHaveBeenNthCalledWith(3, 9, 3, null, input);
+    expect(sum).toHaveBeenNthCalledWith(4, 12, 2, null, input);
+    expect(sum).toHaveBeenNthCalledWith(5, 14, 1, null, input);
+    expect(sum).toHaveBeenNthCalledWith(6, 15, 0, null, input);
+  });
 });

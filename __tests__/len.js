@@ -32,4 +32,17 @@ describe('len()', () => {
     ]);
     expect(len(input)).toEqual(6);
   });
+
+  it('should work with iterators', () => {
+    function* iter() {
+      yield 5;
+      yield 4;
+      yield 3;
+      yield 2;
+      yield 1;
+      yield 0;
+    }
+    const input = iter();
+    expect(len(input)).toEqual(6);
+  });
 });

@@ -93,4 +93,32 @@ describe('filter()', () => {
     expect(even).toHaveBeenNthCalledWith(5, 1, 'e', input);
     expect(even).toHaveBeenNthCalledWith(6, 0, 'f', input);
   });
+
+  it('should work with iterators', () => {
+    const even = jest.fn(x => x % 2 === 0);
+    const check = filter(even);
+
+    function* iter() {
+      yield 5;
+      yield 4;
+      yield 3;
+      yield 2;
+      yield 1;
+      yield 0;
+    }
+    const input = iter();
+    const output = [];
+    for (const x of check(input)) {
+      output.push(x);
+    }
+    expect(output).toEqual([4, 2, 0]);
+
+    expect(even).toHaveBeenCalledTimes(6);
+    expect(even).toHaveBeenNthCalledWith(1, 5, null, input);
+    expect(even).toHaveBeenNthCalledWith(2, 4, null, input);
+    expect(even).toHaveBeenNthCalledWith(3, 3, null, input);
+    expect(even).toHaveBeenNthCalledWith(4, 2, null, input);
+    expect(even).toHaveBeenNthCalledWith(5, 1, null, input);
+    expect(even).toHaveBeenNthCalledWith(6, 0, null, input);
+  });
 });
