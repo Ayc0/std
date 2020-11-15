@@ -1,6 +1,42 @@
 # Standard
 
-## Range
+## Import
+
+To install, run either `npm install --save @ayc0/std` or `yarn add @ayc0/std`, and then:
+
+```js
+const std = require('@ayc0/std');
+const multiplyBy2 = std.map(x => x * 2);
+
+// OR
+
+const map = require('@ayc0/std/map');
+const multiplyBy2 = map(x => x * 2);
+
+// And then you can use it:
+
+const input = [1, 2];
+const output = multiplyBy2(input);
+```
+
+## Supported functions
+
+For all of the functions listed below, you can either do `std.<function>` or import them from `@ayc0/std/<function>`:
+
+- [range](#range)
+- [zip](#zip)
+- [len](#len)
+- [map](#map)
+- [forEach](#foreach)
+- [filter](#filter)
+- [reduce](#reduce)
+- [take](#take)
+- [drop](#drop)
+- [find](#find)
+- [every](#every)
+- [some](#some)
+
+### Range
 
 ```js
 function* range([from,] to[, step]) {
@@ -8,7 +44,7 @@ function* range([from,] to[, step]) {
 }
 ```
 
-## Zip
+### Zip
 
 ```js
 function* zip(iterables) {
@@ -16,7 +52,7 @@ function* zip(iterables) {
 }
 ```
 
-### Supported iterables
+#### Supported iterables
 
 - array
 - string
@@ -25,7 +61,7 @@ function* zip(iterables) {
 - Object
 - iterators
 
-### Examples
+#### Examples
 
 ```js
 for (const [currentValues, indexes, iterables] of zip([
@@ -44,7 +80,7 @@ for (const [currentValues, indexes, iterables] of zip([
 }
 ```
 
-## Len
+### Len
 
 ```js
 function len(iterable) {
@@ -52,7 +88,7 @@ function len(iterable) {
 }
 ```
 
-### Supported iterables
+#### Supported iterables
 
 - array
 - string
@@ -61,7 +97,7 @@ function len(iterable) {
 - Object
 - iterators
 
-## Map
+### Map
 
 ```js
 function map(callback[, thisArg]) {
@@ -75,7 +111,7 @@ function callback(currentValue[, index[, iterable]]) {
 }
 ```
 
-### Supported iterables
+#### Supported iterables
 
 - array
 - string
@@ -84,7 +120,7 @@ function callback(currentValue[, index[, iterable]]) {
 - Object
 - iterators
 
-### Examples
+#### Examples
 
 ```js
 map(x => x * 2)({ a: 1, b: 2 });
@@ -104,7 +140,7 @@ map(x => x.repeat(2))('ab');
 // 'aabb'
 ```
 
-## ForEach
+### ForEach
 
 ```js
 function forEach(callback[, thisArg]) {
@@ -116,7 +152,7 @@ function callback(currentValue[, index[, iterable]]) {
 }
 ```
 
-### Supported iterables
+#### Supported iterables
 
 - array
 - string
@@ -125,7 +161,7 @@ function callback(currentValue[, index[, iterable]]) {
 - Object
 - iterators
 
-### Examples
+#### Examples
 
 ```js
 forEach(x => console.log(x * 2))({ a: 1, b: 2 });
@@ -150,7 +186,7 @@ forEach(x => console.log(x.repeat(2)))('ab');
 // bb
 ```
 
-## Filter
+### Filter
 
 ```js
 function filter(callback[, thisArg]) {
@@ -164,7 +200,7 @@ function callback(currentValue[, index[, iterable]]) {
 }
 ```
 
-### Supported iterables
+#### Supported iterables
 
 - array
 - string
@@ -173,7 +209,7 @@ function callback(currentValue[, index[, iterable]]) {
 - Object
 - iterators
 
-### Examples
+#### Examples
 
 ```js
 filter(x => x % 2)({ a: 1, b: 2 });
@@ -193,7 +229,7 @@ filter(x => x % 2)('12');
 // '1'
 ```
 
-## Reduce
+### Reduce
 
 ```js
 function reduce(callback, initialValue, thisArg) {
@@ -207,7 +243,7 @@ function callback(accumulator, currentValue[, index[, iterable]]) {
 }
 ```
 
-### Supported iterables
+#### Supported iterables
 
 - array
 - string
@@ -216,7 +252,7 @@ function callback(accumulator, currentValue[, index[, iterable]]) {
 - Object
 - iterators
 
-### Examples
+#### Examples
 
 ```js
 reduce((acc, x) => acc + x, 0)({ a: 1, b: 2 });
@@ -239,7 +275,7 @@ reduce((acc, x) => acc + Number(x), 0)('12');
 // '1'
 ```
 
-## Take
+### Take
 
 ```js
 function take(limit) {
@@ -249,7 +285,7 @@ function take(limit) {
 }
 ```
 
-### Supported iterables
+#### Supported iterables
 
 - array
 - string
@@ -258,7 +294,7 @@ function take(limit) {
 - Object
 - iterators
 
-### Examples
+#### Examples
 
 ```js
 take(1)({ a: 1, b: 2 });
@@ -278,7 +314,7 @@ take(1)('ab');
 // 'a'
 ```
 
-## Drop
+### Drop
 
 ```js
 function drop(limit) {
@@ -288,7 +324,7 @@ function drop(limit) {
 }
 ```
 
-### Supported iterables
+#### Supported iterables
 
 - array
 - string
@@ -297,7 +333,7 @@ function drop(limit) {
 - Object
 - iterators
 
-### Examples
+#### Examples
 
 ```js
 drop(1)({ a: 1, b: 2 });
@@ -317,7 +353,7 @@ drop(1)('ab');
 // 'b'
 ```
 
-## Find
+### Find
 
 ```js
 function find(callback[, thisArg]) {
@@ -331,7 +367,7 @@ function callback(currentValue[, index[, iterable]]) {
 }
 ```
 
-### Supported iterables
+#### Supported iterables
 
 - array
 - string
@@ -340,7 +376,7 @@ function callback(currentValue[, index[, iterable]]) {
 - Object
 - iterators
 
-### Examples
+#### Examples
 
 ```js
 find(x => x % 2)({ a: 1, b: 2 });
@@ -360,7 +396,7 @@ find(x => x % 2)('12');
 // [ '1', 0 ]
 ```
 
-## Every
+### Every
 
 ```js
 function every(callback[, thisArg]) {
@@ -374,7 +410,7 @@ function callback(currentValue[, index[, iterable]]) {
 }
 ```
 
-### Supported iterables
+#### Supported iterables
 
 - array
 - string
@@ -383,7 +419,7 @@ function callback(currentValue[, index[, iterable]]) {
 - Object
 - iterators
 
-### Examples
+#### Examples
 
 ```js
 every(x => x <= 2)({ a: 1, b: 2 });
@@ -403,7 +439,7 @@ every(x => x === '1')('12');
 // false
 ```
 
-## Some
+### Some
 
 ```js
 function some(callback[, thisArg]) {
@@ -417,7 +453,7 @@ function callback(currentValue[, index[, iterable]]) {
 }
 ```
 
-### Supported iterables
+#### Supported iterables
 
 - array
 - string
@@ -426,7 +462,7 @@ function callback(currentValue[, index[, iterable]]) {
 - Object
 - iterators
 
-### Examples
+#### Examples
 
 ```js
 some(x => x <= 2)({ a: 1, b: 2 });
