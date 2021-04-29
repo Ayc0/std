@@ -14,4 +14,6 @@ module.exports = {
   find: require('./find'),
   some: require('./some'),
   every: require('./every'),
+
+  Iterable: require('./Iterable'),
 };
