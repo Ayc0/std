@@ -25,7 +25,7 @@ describe('Documentation', () => {
     .toString();
   for (const mod of modules) {
     it(`should document "${mod}"`, () => {
-      const isDocumented = readme.includes(`${mod}(`);
+      const isDocumented = readme.includes(`- [${mod}](#`);
       expect(isDocumented).toBe(true);
     });
   }
