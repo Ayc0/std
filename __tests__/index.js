@@ -10,8 +10,11 @@ const std = require('..');
 
 describe('exports', () => {
   for (const mod of modules) {
-    it(`should export ${mod}`, () => {
+    it(`should export '${mod}'`, () => {
       expect(std[mod]).toBe(require(`../${mod}`));
+    });
+    it(`should have tests for "${mod}"`, () => {
+      expect(fs.existsSync(`./${mod}.js`)).toBe(true);
     });
   }
 });
@@ -21,7 +24,7 @@ describe('Documentation', () => {
     .readFileSync(path.join(__dirname, '..', 'README.md'))
     .toString();
   for (const mod of modules) {
-    it(`should document ${mod}`, () => {
+    it(`should document "${mod}"`, () => {
       const isDocumented = readme.includes(`${mod}(`);
       expect(isDocumented).toBe(true);
     });
