@@ -1,8 +1,6 @@
-const iterate = require('../utils/iterate');
-
-function* drop(iterable, limit) {
+function* drop(generator, limit) {
   let i = 0;
-  for (const step of iterate(iterable)) {
+  for (const step of generator) {
     if (i >= limit) {
       yield step;
     }

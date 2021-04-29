@@ -1,7 +1,5 @@
-const iterate = require('../utils/iterate');
-
-function* map(iterable, callback, thisArg) {
-  for (const step of iterate(iterable)) {
+function* map(generator, callback, thisArg) {
+  for (const step of generator) {
     yield [callback.apply(thisArg, step), step[1]];
   }
 }
