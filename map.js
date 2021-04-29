@@ -1,12 +1,7 @@
-const iterate = require('./utils/iterate');
 const { checkType } = require('./utils/checkType');
 const generateIterable = require('./utils/generateIterable');
 
-function* apply(iterable, callback, thisArg) {
-  for (const step of iterate(iterable)) {
-    yield [callback.apply(thisArg, step), step[1]];
-  }
-}
+const apply = require('./apply/map');
 
 const map = (callback, thisArg) => iterable => {
   const type = checkType(iterable);
