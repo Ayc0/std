@@ -1,13 +1,8 @@
 const iterate = require('./utils/iterate');
+const apply = require('./apply/find');
 
 function find(callback, thisArg) {
-  return iterable => {
-    for (const step of iterate(iterable)) {
-      if (callback.apply(thisArg, step)) {
-        return [step[0], step[1]];
-      }
-    }
-  };
+  return iterable => apply(iterate(iterable), callback, thisArg);
 }
 
 module.exports = find;

@@ -1,14 +1,8 @@
 const iterate = require('./utils/iterate');
+const apply = require('./apply/every');
 
 function every(callback, thisArg) {
-  return iterable => {
-    for (const step of iterate(iterable)) {
-      if (!callback.apply(thisArg, step)) {
-        return false;
-      }
-    }
-    return true;
-  };
+  return iterable => apply(iterate(iterable), callback, thisArg);
 }
 
 module.exports = every;

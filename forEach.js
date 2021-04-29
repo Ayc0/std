@@ -1,9 +1,8 @@
 const iterate = require('./utils/iterate');
+const apply = require('./apply/forEach');
 
 const forEach = (callback, thisArg) => iterable => {
-  for (const step of iterate(iterable)) {
-    callback.apply(thisArg, step);
-  }
+  apply(iterate(iterable), callback, thisArg);
 };
 
 module.exports = forEach;

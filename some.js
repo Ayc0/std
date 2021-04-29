@@ -1,14 +1,8 @@
 const iterate = require('./utils/iterate');
+const apply = require('./apply/some');
 
 function some(callback, thisArg) {
-  return iterable => {
-    for (const step of iterate(iterable)) {
-      if (callback.apply(thisArg, step)) {
-        return true;
-      }
-    }
-    return false;
-  };
+  return iterable => apply(iterate(iterable), callback, thisArg);
 }
 
 module.exports = some;
