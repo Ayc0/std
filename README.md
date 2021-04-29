@@ -529,3 +529,4 @@ const iterable = Iterable.from([1, 2, 3]);
 iterable.build(type.Set);
 // Set([1, 2, 3])
 ```
+
