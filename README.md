@@ -35,6 +35,7 @@ For all of the functions listed below, you can either do `std.<function>` or imp
 - [find](#find)
 - [every](#every)
 - [some](#some)
+- [Iterable](#iterable)
 
 ### Range
 
@@ -480,4 +481,51 @@ some(x => x <= 2)(
 // true
 some(x => x === '1')('12');
 // true
+```
+
+### Iterator
+
+`Iterator` allows you to chain operations more easily. It supports all these methods:
+
+- `drop`
+- `take`
+- `map`
+- `filter`
+- `every`
+- `some`
+- `reduce`
+- `find`
+- `len`
+- `forEach`
+
+You can also use the method `build()` to reconstruct an iterable (either from the same type as the input, or you can transform it).
+
+#### Supported iterables
+
+- array
+- string
+- Map
+- Set
+- Object
+- iterators
+
+#### Examples
+
+```js
+const iterable = Iterable.from([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+iterable
+  .drop(1)
+  .filter(x => x % 2 === 0)
+  .map(x => x * 3)
+  .take(2)
+  .build();
+// [6, 12]
+```
+
+`build()` accepts an optional parameter `type`:
+
+```js
+const iterable = Iterable.from([1, 2, 3]);
+iterable.build(type.Set);
+// Set([1, 2, 3])
 ```
